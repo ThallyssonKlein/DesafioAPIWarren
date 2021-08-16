@@ -16,11 +16,12 @@ export default function Home() {
   const [balance, setBalance] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  async function loadBalance(){
+    const serviceResponse = await GetBalance();
+    setBalance(serviceResponse.balance);
+  }
   useEffect(() => {
-    (async () => {
-      const serviceResponse = await GetBalance();
-      setBalance(serviceResponse.balance);
-    })();
+    loadBalance();
   }, []);
 
   function openModal() {
@@ -61,9 +62,9 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.viewport}>
-        <DepositCard />
-        <WithDrawCard />
-        <PayCard />
+        <DepositCard loadBalance={loadBalance} />
+        <WithDrawCard loadBalance={loadBalance} />
+        <PayCard loadBalance={loadBalance} />
       </div>
 
       <Modal

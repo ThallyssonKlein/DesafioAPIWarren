@@ -5,7 +5,7 @@ import styles from './index.module.css';
 
 import { PostWidhdraw } from '../../service/withdraw';
 
-export default function WithDrawCard() {
+export default function WithDrawCard({loadBalance}) {
   const [value, setValue] = useState(0);
 
   async function handleWidhtdraw() {
@@ -14,6 +14,7 @@ export default function WithDrawCard() {
     if (serviceResponse) {
       alert('Saque feito com sucesso!');
       setValue(0);
+      loadBalance();
     } else {
       alert('Falha ao executar o saque!');
     }

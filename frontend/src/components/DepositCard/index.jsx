@@ -5,7 +5,7 @@ import styles from './index.module.css';
 
 import { PostDeposit } from '../../service/deposit';
 
-export default function DepositCard() {
+export default function DepositCard({loadBalance}) {
   const [value, setValue] = useState(0);
 
   async function handleDeposit() {
@@ -14,6 +14,7 @@ export default function DepositCard() {
     if (serviceResponse) {
       alert('Depósito feito com sucesso!');
       setValue(0);
+      loadBalance();
     } else {
       alert('Falha ao fazer o depósito!');
     }

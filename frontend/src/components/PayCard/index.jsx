@@ -5,7 +5,7 @@ import styles from './index.module.css';
 
 import { PostPay } from '../../service/pay';
 
-export default function PayCard() {
+export default function PayCard({loadBalance}) {
   const [value, setValue] = useState(0);
   const [receiver, setReceiver] = useState('');
 
@@ -16,6 +16,7 @@ export default function PayCard() {
       alert('Pagamento feito com sucesso!');
       setValue(0);
       setReceiver('');
+      loadBalance();
     } else {
       alert('Falha ao executar o pagamento!');
     }
