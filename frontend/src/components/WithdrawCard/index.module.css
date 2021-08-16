@@ -1,0 +1,15 @@
+.assetViewport {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: black;
+  margin: 30px;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.text {
+  color: white;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}

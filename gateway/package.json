@@ -1,0 +1,27 @@
+{
+  "name": "gateway",
+  "packageManager": "yarn@3.0.0",
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.3.7",
+    "@grpc/proto-loader": "^0.6.4",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "morgan": "^1.10.0",
+    "spdy": "^4.0.2"
+  },
+  "scripts": {
+    "lint": "yarn eslint --ext js --fix --quiet",
+    "start:dev": "yarn nodemon --exec \"yarn lint && node ./src/app.js\"",
+    "start": "node ./src/app.js"
+  }
+}

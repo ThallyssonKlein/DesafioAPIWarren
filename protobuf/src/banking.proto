@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package me.thallysson.grpc.banking;
+
+import "error.proto";
+import "token.proto";
+
+service Banking {
+    rpc Deposit (DepositRequest) returns (DepositResponse) {};
+    rpc Withdraw (WithdrawRequest) returns (WithdrawResponse) {};
+    rpc GetBalance (GetBalanceRequest) returns (GetBalanceResponse) {};
+    rpc Pay (PayRequest) returns (PayResponse) {};
+    rpc GetHistory (GetHistoryRequest) returns (GetHistoryResponse) {};
+}
+
+message GetBalanceRequest {
+    string token = 1;
+}
+
+message GetBalanceResponse {
+    string balance = 1;
+    optional me.thallysson.grpc.util.Error error = 2;
+}
+
+message DepositRequest {
+    string token = 1;
+    string amount = 2;
+}
+
+message DepositResponse {
+    string message = 1;
+    optional me.thallysson.grpc.util.Error error = 2;
+}
+
+message WithdrawRequest {
+    string token = 1;
+    string amount = 2;
+}
+
+message WithdrawResponse {
+    string message = 1;
+    optional me.thallysson.grpc.util.Error error = 2;
+}
+
+message PayRequest {
+    string token = 1;
+    string receiver = 2;
+    string amount = 3;
+}
+
+message PayResponse {
+    string message = 1;
+    optional me.thallysson.grpc.util.Error error = 2;
+}
+
+message GetHistoryRequest {
+    string token = 1;
+}
+
+message GetHistoryResponse {
+    string history = 1;
+    optional me.thallysson.grpc.util.Error error = 2;
+}

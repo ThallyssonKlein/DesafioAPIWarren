@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package me.thallysson.grpc.util;
+
+message Error {
+    string message = 1;
+    optional string cause = 2;
+}
