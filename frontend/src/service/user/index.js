@@ -10,6 +10,10 @@ export async function PostUser(name, email, cpf, password) {
 
     const repositoryResponse = await PostRepository(name, email, `${cpf}`, password);
 
+    if(!repositoryResponse.ok){
+      alert("Usuário já existe (email e cpf são únicos)!");
+    }
+    
     return repositoryResponse.ok;
   } catch (err) {
     return false;

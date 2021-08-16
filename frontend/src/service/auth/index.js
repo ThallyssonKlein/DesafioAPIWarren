@@ -13,9 +13,9 @@ export async function Login(email, password) {
     return false;
   }
 
-  const repositoryResponse = await LoginRepository(email, password);
-
   try {
+    const repositoryResponse = await LoginRepository(email, password);
+
     if (repositoryResponse.ok && repositoryResponse.headers['x-access-token']) {
       saveAccessToken(repositoryResponse.headers['x-access-token']);
       return true;

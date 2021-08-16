@@ -50,8 +50,6 @@ export default function Login() {
       setPasswordCreateAccount('');
       closeModal();
       router.push('/');
-    } else {
-      alert('Preecha todos os campos por favor!');
     }
   }
 
@@ -60,7 +58,7 @@ export default function Login() {
       <Head>
         <title>Login</title>
       </Head>
-      <div className="viewport" style={{ backgroundImage: 'url(/img-bg-login.jpg)' }}>
+      <div className="viewport">
         <div className="col">
           <img src="https://via.placeholder.com/150" alt="Login logo" />
           <FilledInput
@@ -100,11 +98,12 @@ export default function Login() {
           </div>
         </div>
       </div>
+
       <Modal
         isOpen={modalIsOpen}
         contentLabel="Criar conta"
       >
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+        <div className="modalTop">
           <h2 style={{ fontFamily: 'Arial, sans-serif' }}>Criar conta</h2>
           <Button
             variant="contained"
@@ -115,7 +114,7 @@ export default function Login() {
             <b>X</b>
           </Button>
         </div>
-        <div className="viewport" style={{ backgroundImage: 'url(/img-bg-login.jpg)' }}>
+        <div className="viewport">
           <div className="col">
             <FilledInput
               placeholder="Nome"

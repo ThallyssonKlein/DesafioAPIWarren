@@ -1,11 +1,11 @@
 /* eslint-disable import/prefer-default-export */
 import { PostPay as PostRepository } from '../../repository/pay';
 import { loadAccessToken } from '../cookies';
-import { validateAmount } from '../../utils';
+import { validateAmount, isEmpty } from '../../utils';
 
 export async function PostPay(amount, receiver) {
   try {
-    if (!validateAmount(amount)) {
+    if (!validateAmount(amount) && !isEmpty(receiver)) {
       return false;
     }
 

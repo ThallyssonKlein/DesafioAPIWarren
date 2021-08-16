@@ -5,16 +5,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  
-  .row {
-    display: flex;
-    flex-direction: row;
-  
-    align-items: center;
-  }
-  .col {
-    display: flex;
-    flex-direction: column;
-  }
-  
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

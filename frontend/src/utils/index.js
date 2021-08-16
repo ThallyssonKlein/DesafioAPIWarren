@@ -13,10 +13,12 @@ export function isEmpty(value) {
 
 export function validateUserInformation(name, email, cpf, password) {
   if ((!name || name === '') || (!cpf || cpf === '') || (!password || password === '')) {
+    alert('Preecha todos os campos por favor!');
     return false;
   }
 
   if (!validateEmail(email)) {
+    alert('Email formato incorreto!');
     return false;
   }
 
