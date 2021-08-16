@@ -6,7 +6,7 @@ export async function GetBalance() {
   try {
     const repositoryResponse = await GetRepository(loadAccessToken());
 
-    return repositoryResponse.data;
+    return repositoryResponse.data.balance;
   } catch (err) {
     return false;
   }

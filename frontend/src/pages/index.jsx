@@ -18,7 +18,7 @@ export default function Home() {
 
   async function loadBalance(){
     const serviceResponse = await GetBalance();
-    setBalance(serviceResponse.balance);
+    setBalance(serviceResponse);
   }
   useEffect(() => {
     loadBalance();
@@ -71,7 +71,7 @@ export default function Home() {
         isOpen={modalIsOpen}
         contentLabel="Extrato"
       >
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+        <div className="modalTop">
           <h2 style={{ fontFamily: 'Arial, sans-serif' }}>Extrato</h2>
           <Button
             variant="contained"
