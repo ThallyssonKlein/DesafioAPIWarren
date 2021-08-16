@@ -6,9 +6,9 @@ import { isEmpty, validateEmail } from '../../utils';
 export async function Login(email, password) {
   if (isEmpty(email) || isEmpty(password)) {
     if (!validateEmail(email)) {
-      alert('Invalid email format');
+      alert('Formato de email inválido');
     } else {
-      alert('Email or password cannot be empty');
+      alert('Email ou senha não podem ser nulos');
     }
     return false;
   }
