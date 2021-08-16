@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package me.thallysson.grpc.util;
+
+message Token {
+    string data = 1;
+}

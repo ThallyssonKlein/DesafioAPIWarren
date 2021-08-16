@@ -1,0 +1,80 @@
+services:
+  gateway:
+    build: ./gateway
+    restart: always
+    hostname: gateway_svc
+    env_file:
+      - ./data/deploy.env
+    volumes:
+      - ./protobuf:/protobuf
+      - ./data:/data
+    ports:
+      - 80:3001
+    depends_on:
+      - users
+      - banking
+
+  users:
+    build: ./users
+    restart: always
+    hostname: users_svc
+    env_file:
+      - ./data/deploy.env
+    volumes:
+      - ./protobuf:/protobuf
+      - ./data:/data
+    depends_on:
+      - mongo
+      - mariadb
+
+  banking:
+    build: ./banking
+    restart: always
+    hostname: banking_svc
+    env_file:
+      - ./data/deploy.env
+    volumes:
+      - ./protobuf:/protobuf
+      - ./data:/data
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    restart: always
+    hostname: warren_mongo
+    env_file:
+      - ./data/deploy.env
+    volumes:
+      - ./data/mongodb:/data/db
+
+  mariadb:
+    image: mariadb
+    restart: always
+    hostname: warren_mariadb
+    env_file:
+      - ./data/deploy.env
+    volumes:
+      - ./data/mariadb:/var/lib/mysql
+      - ./data/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    hostname: warren_pma
+    ports:
+      - 8080:80
+    links:
+      - mariadb:db
+    depends_on:
+      - mariadb
+
+  frontend:
+    build: ./frontend
+    restart: always
+    volumes:
+      - ./data:/data
+    ports:
+      - 3000:3000
+    depends_on:
+      - gateway

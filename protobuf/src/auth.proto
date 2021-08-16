@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package me.thallysson.grpc.auth;
+
+import "error.proto";
+import "token.proto";
+
+service Auth {
+    rpc Login (LoginRequest) returns (LoginResponse) {};
+}
+
+message LoginRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    me.thallysson.grpc.util.Token token = 1;
+    optional me.thallysson.grpc.util.Error error = 2;
+}

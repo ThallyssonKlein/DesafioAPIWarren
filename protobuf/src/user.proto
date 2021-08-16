@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package me.thallysson.grpc.user;
+
+import "error.proto";
+import "token.proto";
+
+service Users {
+    rpc Create (CreateRequest) returns (CreateResponse) {};
+    rpc Delete (DeleteRequest) returns (DeleteResponse) {};
+    rpc Get (GetRequest) returns (GetResponse) {};
+    rpc DecodeToken (DecodeTokenRequest) returns (DecodeTokenResponse) {};
+}
+
+message CreateRequest {
+    string name = 1;
+    string email = 2;
+    string cpf = 3;
+    string password = 4;
+}
+
+message CreateResponse {
+    string id = 1;
+    optional me.thallysson.grpc.util.Error error = 2;
+}
+
+message DeleteRequest {
+    me.thallysson.grpc.util.Token token = 1;
+}
+
+message DeleteResponse {
+    string message = 1;
+    optional me.thallysson.grpc.util.Error error = 2;
+}
+
+message GetRequest {
+    me.thallysson.grpc.util.Token token = 1;
+}
+
+message GetResponse {
+    message UserPublicData {
+        string name = 1;
+        string email = 2;
+        string cpf = 3;
+    }
+
+    UserPublicData user = 1;
+    optional me.thallysson.grpc.util.Error error = 2;
+}
+
+message DecodeTokenRequest {
+    string token = 1;
+}
+
+message DecodeTokenResponse {
+    string id = 1;
+    optional me.thallysson.grpc.util.Error error = 2;
+}
