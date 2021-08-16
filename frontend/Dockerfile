@@ -8,6 +8,6 @@ COPY ./package.json /package.json
 
 RUN [ "yarn", "install" ]
 
-CMD [ "yarn", "start" ]
+CMD [ "yarn", "dev" ]
 
 EXPOSE 3000
